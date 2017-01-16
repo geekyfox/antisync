@@ -1,0 +1,12 @@
+== Antisync
+
++antisync+ is a command-line client for
+{Antiblog}[https://github.com/geekyfox/antiblog].
+
+== Installation & Usage
+
+This utility is not (yet) intended for general usage (by anyone except
+myself).
+
+If you really want to use it and can't figure out how, feel free to
+ask {me}[mailto:ivan.appel@gmail.com] for help directly.

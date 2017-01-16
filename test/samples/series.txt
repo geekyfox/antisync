@@ -1,0 +1,2 @@
+~ series foobar 123
+Hello, world

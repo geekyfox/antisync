@@ -1,0 +1,7 @@
+Here is some code:
+~ code
+puts "Hello, world"
+
+puts "Bla bla"
+~ content
+Here is some text again

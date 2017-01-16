@@ -1,0 +1,5 @@
+Some text
+~ footnote
+Some comment
+~ content
+. Some more text.

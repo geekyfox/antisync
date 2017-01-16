@@ -1,0 +1,4 @@
+Some text<a name='tx1' href='#nm1'><sup>1</sup></a>. Some more text.
+<hr />
+<a name='nm1' href='#tx1'><sup>1</sup></a>
+Some comment

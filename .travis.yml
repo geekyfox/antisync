@@ -1,0 +1,17 @@
+language: ruby
+
+rvm:
+    - 2.0.0
+    - 2.2.4
+    - 2.2.6
+    - 2.3.3
+    - ruby-head
+
+before_script:
+    - gem install power_assert
+
+script:
+    - gem build antisync.gemspec
+    - gem install --dev antisync-*.gem
+    - rake test
+    - rake doc
