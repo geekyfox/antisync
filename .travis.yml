@@ -8,10 +8,12 @@ rvm:
     - ruby-head
 
 before_script:
-    - gem install power_assert
+    - gem install bundler
 
 script:
-    - gem build antisync.gemspec
-    - gem install --dev antisync-*.gem
-    - rake test
+    - bundle install
+    - bundle exec rake test
     - rake doc
+    - rake build
+    - rake install
+
