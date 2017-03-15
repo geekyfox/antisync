@@ -222,7 +222,8 @@ module Antisync
 
       def initialize
         @primary_buffer = LineBuffer.new
-        @summary = LineBuffer.new
+        @summary_buffer = LineBuffer.new
+        @summary = ContentWriter.new(@summary_buffer)
         @content = ContentWriter.new(@primary_buffer)
         @footer = FooterBuffer.new(@primary_buffer)
         @poem = PoemWriter.new(@primary_buffer)
@@ -232,7 +233,7 @@ module Antisync
       end
 
       def insert_summary
-        @primary_buffer.concat(@summary)
+        @primary_buffer.concat(@summary_buffer)
       end
 
       def switch_to(mode)
@@ -279,7 +280,7 @@ module Antisync
         @footer.dump
         content = @primary_buffer.format
         raise ParseError, 'No content' unless content
-        summary = @summary.format
+        summary = @summary_buffer.format
         {
           content: content, summary: summary
         }

@@ -121,7 +121,9 @@ module Antisync
     end
 
     def create(entry)
-      http_post('/api/create', entry) { |r| yield r['id'] }
+      http_post('/api/create', entry) do |r|
+        yield r['content']
+      end
     end
 
     def update(entry)
@@ -201,11 +203,12 @@ module Antisync
       @talker = app.talker
       @client = app.client
       @config = app.config
+      @target = app.params.target
     end
 
     def on_new(filename, entry)
       @client.create(entry) do |id|
-        Parser.inject_id(@params.target, filename, id)
+        Parser.inject_id(@target, filename, id)
         @talker.ok("#{filename} => #{@config.base_url}/entry/#{id}")
       end
     end
@@ -237,7 +240,7 @@ module Antisync
   # Main application's class.
   #
   class App
-    attr_reader :config, :client, :talker
+    attr_reader :config, :client, :talker, :params
 
     def initialize(args = nil)
       @params = CmdArgs.parse(args)
